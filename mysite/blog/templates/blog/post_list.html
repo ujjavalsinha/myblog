@@ -1,0 +1,14 @@
+{%extends 'blog/base.html'%}
+{%block body_block%}
+  <div class="container">
+    {%for post in post_list%}
+      <h1><a href="{%url 'blog:post_detail' pk=post.pk %}">{{post.title}}</a></h1>
+      <p>Published on:{{post.published_date|date:"D M Y"}}</p>
+      <p>{{ post.text|truncatechars:200 }}</p>
+
+      <p><a href="{%url 'blog:post_detail' pk=post.pk %}">Comment:{{post.approve_comments.count}}</a></p>
+
+    {%endfor%}
+
+  </div>
+{%endblock%}
